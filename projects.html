@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="photos/favicon.ico" type="image/x-icon" />
+  <title>My Projects</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="photos/nu_logo.png" alt="NU Logo" />
+      <span>National University</span>
+    </div>
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="projects-section">
+    <h2 class="section-title">Projects</h2>
+    <p class="section-subtitle">
+      A collection of academic and personal projects that demonstrate practical implementations of web development, UI design, logic-based systems, and data handling.
+    </p>
+
+    <div class="project-grid">
+
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <iframe src="https://drive.google.com/file/d/1bnyxZGoPV8EKA9iGyLJvc9F9k_P_lBQm/preview" allow="autoplay" loading="lazy"></iframe>
+        <div class="card-content">
+          <h3>ALC Bank System</h3>
+          <p>A banking simulation with login validation, deposit/withdraw operations, and balance checks. Built with HTML, CSS, JS.</p>
+          <ul class="project-highlights">
+            <li><strong>Pros:</strong> Interactive UI, accurate logic</li>
+            <li><strong>Cons:</strong> No backend or persistent data</li>
+            <li><strong>Challenges:</strong> Input edge case handling</li>
+          </ul>
+          <a href="project1.html" class="btn-glow">View Demo</a>
+        </div>
+      </div>
+
+      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <iframe src="https://drive.google.com/file/d/13g9AnXs26zEJxVn91j4e-U71jarT2SB4/preview" allow="autoplay" loading="lazy"></iframe>
+        <div class="card-content">
+          <h3>LuxeShip Booking System</h3>
+          <p>Inspired by 2GO booking flow. Features real-time validation, summary modal, and class selection using JS.</p>
+          <ul class="project-highlights">
+            <li><strong>Pros:</strong> UI-focused, real-time form logic</li>
+            <li><strong>Cons:</strong> Static only</li>
+            <li><strong>Challenges:</strong> Step-based flow logic</li>
+          </ul>
+          <a href="project2.html" class="btn-glow">View Demo</a>
+        </div>
+      </div>
+
+      <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+        <iframe src="https://drive.google.com/file/d/1V52-1jAfpn-65UkEHRh_gux-yyEroqbx/preview" allow="autoplay" loading="lazy"></iframe>
+        <div class="card-content">
+          <h3>Claudia Website</h3>
+          <p>Static aesthetic site with dark theme and animations. Built for visual impact and responsive layout testing.</p>
+          <ul class="project-highlights">
+            <li><strong>Pros:</strong> Clean layout, mobile-friendly</li>
+            <li><strong>Cons:</strong> No dynamic backend</li>
+            <li><strong>Challenges:</strong> Layout balance and responsiveness</li>
+          </ul>
+          <a href="project3.html" class="btn-glow">View Demo</a>
+        </div>
+      </div>
+
+      <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+        <iframe src="https://drive.google.com/file/d/1TP-2VURsI0RGCm3x7o0IjY8E6nsE-RBS/preview" allow="autoplay" loading="lazy"></iframe>
+        <div class="card-content">
+          <h3>POS1: Point-of-Sale System</h3>
+          <p>JS-based system with CSV-like logic for stocks, sales, and inventory. Includes login and transaction tracking.</p>
+          <ul class="project-highlights">
+            <li><strong>Pros:</strong> Handles real-time data simulation</li>
+            <li><strong>Cons:</strong> File-based only</li>
+            <li><strong>Challenges:</strong> Dynamic stock & flow control</li>
+          </ul>
+          <a href="https://drive.google.com/file/d/1kh17DnFqhTPBQmz62DB8F_he24W0FMNP/view?usp=sharing" class="btn-glow" target="_blank">View Demo</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 National University - BSIT Portfolio. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+    const toggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

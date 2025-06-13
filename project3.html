@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="photos/favicon.ico" type="image/x-icon" />
+  <title> Claudia </title>
+  <link rel="stylesheet" href="css/project3.css" />
+</head>
+<body>
+  <header class="main-header">
+    <h1> Claudia 𓂃ﾟ ⋆ ﾟ ☂︎ 🍂༄˖° </h1>
+    <p>Your cozy space to focus, reflect, and grow—one raindrop at a time.</p>
+  </header>
+
+  <aside class="scroll-sidebar"></aside>
+  
+
+
+  <main class="main-wrapper">
+    <section class="focus-panel">
+      <div class="timer-box glass">
+        <h2>⏳ Focus Session</h2>
+        <label for="focus-time">Choose Time:</label>
+        <select id="focus-time">
+          <option value="900">15 minutes</option>
+          <option value="1500" selected>25 minutes</option>
+          <option value="2700">45 minutes</option>
+          <option value="3600">1 hour</option>
+        </select>
+        <button onclick="setFocusTime()">Set</button>
+
+        <div class="cloud-wrapper">
+          <div class="cloud-shape">
+            <span id="timer-display">25:00</span>
+            <div class="raindrop drop1"></div>
+            <div class="raindrop drop2"></div>
+            <div class="raindrop drop3"></div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button onclick="startTimer()">Start</button>
+          <button onclick="pauseTimer()">Pause</button>
+          <button onclick="resetTimer()">Reset</button>
+        </div>
+      </div>
+
+      <div class="todo-box glass">
+        <h2>📝 To-Do List</h2>
+        <input type="text" id="task-input" placeholder="Add a task..." />
+        <button onclick="addTask()">Add</button>
+        <ul id="task-list" class="task-list"></ul>
+      </div>
+    </section>
+
+<section class="sound-box glass">
+  <label for="sound-theme">🎵 Choose Your Rain Sound:</label>
+  <select id="sound-theme" onchange="changeSound()">
+    <option value="lofi">☁️ Rainy Lo-fi Chill</option>
+    <option value="cafe">☕ Umbrella Café Ambience</option>
+    <option value="window">🌧️ Rain on Street Vibes</option>
+  </select>
+
+  <div class="yt-embed">
+    <iframe
+      id="yt-player"
+      src=""
+      title="RainyFocus Sounds"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+
+
+    <section class="quote-box">
+      <p id="quote">“Let the rain remind you to slow down and grow.”</p>
+    </section>
+  </main>
+
+  <footer class="glass footer-box">
+    <p>☁️ &copy; 2025 RainyFocus Cafe • Stay grounded. Stay focused.</p>
+    <a href="projects.html" class="back-link">← Back to Projects</a>
+  </footer>
+
+  <script src="js/project3.js"></script>
+</body>
+</html>

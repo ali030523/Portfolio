@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="photos/favicon.ico" type="image/x-icon" />
+  <title>About Me</title>
+
+  <!-- Styles -->
+   <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ NAVIGATION -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="photos/nu_logo.png" alt="NU Logo" />
+      <span>National University</span>
+    </div>
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ✅ MAIN WRAPPER -->
+  <main class="about-wrapper">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <h2 class="sidebar-title">ABOUT ME</h2>
+      <nav class="scroll-nav">
+        <ul class="sidebar-nav">
+          <li><a href="#introduction"><i class="fas fa-user"></i> Introduction</a></li>
+          <li><a href="#skills-tools"><i class="fas fa-code"></i> Skills & Tools</a></li>
+          <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+        </ul>
+      </nav>
+      <div class="social-links" aria-label="Social Media Links">
+        <a href="https://m.me/leeyy.az1" target="_blank" aria-label="Messenger" title="Message me on Messenger">
+          <i class="fab fa-facebook-messenger"></i>
+        </a>
+        <a href="mailto:leighlargueza@gmail.com" target="_blank" aria-label="Gmail" title="Email me via Gmail">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="mailto:gregorioll@students.nu-moa.edu.ph" target="_blank" aria-label="Microsoft Teams" title="Message me on Teams">
+          <i class="fab fa-microsoft"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/leigh-largueza-8aa41819b" target="_blank" aria-label="LinkedIn" title="Connect with me on LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+    </div>
+
+    </aside>
+
+    <!-- Main Content -->
+    <section class="main-content">
+
+      <!-- ✅ INTRODUCTION -->
+      <section id="introduction" class="content-section" data-aos="fade-up">
+        <h2><i class="fas fa-id-card"></i> Introduction</h2>
+        <div class="intro-box">
+          <div class="intro-grid">
+            <img src="photos/icon4.jpg" alt="Ali's Profile Picture" class="profile-img" data-aos="zoom-in" />
+            <div class="details">
+              <p>
+                Hi, I'm Ali — a passionate 2nd-year BSIT-MWA student. I enjoy creating interactive and responsive websites and applications.
+                My goal is to design meaningful and user-centered digital experiences while constantly learning and improving my skills.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ✅ SKILLS & TOOLS -->
+      <section id="skills-tools" class="content-section" data-aos="fade-up">
+        <h2><i class="fas fa-tools"></i> Skills & Tools</h2>
+
+        <h3>Technical Skills</h3>
+        <div class="card-grid">
+          <div class="card"><i class="fab fa-html5"></i> HTML</div>
+          <div class="card"><i class="fab fa-css3-alt"></i> CSS</div>
+          <div class="card"><i class="fab fa-js"></i> JavaScript</div>
+          <div class="card"><i class="fab fa-java"></i> Java</div>
+          <div class="card"><i class="fas fa-database"></i> SQL</div>
+          <div class="card"><i class="fas fa-code-branch"></i> Git</div>
+        </div>
+
+        <h3 style="margin-top: 40px;">Development Tools</h3>
+        <div class="card-grid">
+          <div class="card"><i class="fas fa-code"></i> NetBeans</div>
+          <div class="card"><i class="fas fa-laptop-code"></i> Visual Studio</div>
+          <div class="card"><i class="fab fa-android"></i> Android Studio</div>
+          <div class="card"><i class="fas fa-fire"></i> Firebase</div>
+          <div class="card"><i class="fab fa-github"></i> GitHub</div>
+        </div>
+      </section>
+
+      <!-- ✅ EDUCATION -->
+      <section id="education" class="content-section" data-aos="fade-up">
+        <h2><i class="fas fa-university"></i> Education</h2>
+        <div class="education-wrapper">
+          <img src="photos/nu_logo.png" alt="National University Logo" class="school-logo" />
+          <p>
+            I'm currently a second-year BSIT student majoring in Mobile and Web Application at National University – Mall of Asia.
+            I focus on building real-world web and mobile projects while learning development tools like Firebase and Android Studio.
+          </p>
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <!-- ✅ FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2025 National University - BSIT Portfolio. All rights reserved.</p>
+  </footer>
+
+  <!-- ✅ BURGER + SCROLL SPY -->
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    const sections = document.querySelectorAll(".content-section");
+    const sidebarLinks = document.querySelectorAll(".sidebar-nav a");
+
+    window.addEventListener("scroll", () => {
+      let current = null;
+      let minOffset = Infinity;
+
+      sections.forEach(section => {
+        const offset = section.getBoundingClientRect().top;
+        if (offset >= 0 && offset < minOffset) {
+          minOffset = offset;
+          current = section;
+        }
+      });
+
+      if (current) {
+        const id = current.getAttribute("id");
+        sidebarLinks.forEach(link => {
+          link.classList.remove("active-tab");
+          if (link.getAttribute("href").includes(id)) {
+            link.classList.add("active-tab");
+          }
+        });
+      }
+    });
+
+    window.addEventListener("load", () => {
+      document.dispatchEvent(new Event("scroll"));
+    });
+  </script>
+
+  <!-- ✅ AOS INIT -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  </script>
+</body>
+</html>

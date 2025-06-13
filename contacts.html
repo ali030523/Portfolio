@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="photos/favicon.ico" type="image/x-icon" />
+  <title>Contact Me</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/contacts.css" />
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Animate on Scroll -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="photos/nu_logo.png" alt="NU Logo" />
+      <span>National University</span>
+    </div>
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contacts.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="contact-container" data-aos="fade-up">
+
+      <!-- Left -->
+      <div class="contact-left" data-aos="fade-right">
+        <h2>Let’s Work Together</h2>
+        <p>If you have any questions, project proposals, or just want to connect, feel free to reach out. I'm always open to collaboration and new ideas.</p>
+        <div class="contact-icons">
+          <div class="contact-icons">
+            <a href="https://m.me/leeyy.az1" target="_blank" aria-label="Messenger" title="Message me on Messenger">
+              <i class="fab fa-facebook-messenger"></i>
+            </a>
+            <a href="mailto:leighlargueza@gmail.com" target="_blank" aria-label="Gmail" title="Email me via Gmail">
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a href="mailto:gregorioll@students.nu-moa.edu.ph" target="_blank" aria-label="Microsoft Teams" title="Message me on Teams">
+              <i class="fab fa-microsoft"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/leigh-largueza-8aa41819b" target="_blank" aria-label="LinkedIn" title="Connect with me on LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="tel:+639283182050" target="_blank" aria-label="Phone" title="Call me">
+              <i class="fas fa-phone"></i>
+            </a>
+        </div>
+
+      </div>
+
+      <!-- Right -->
+      <div class="contact-right" data-aos="fade-left">
+        <form id="contactForm" class="contact-form">
+          <input type="text" id="name" name="name" placeholder="Full Name" required />
+          <input type="email" id="email" name="email" placeholder="Email Address" required />
+          <textarea id="message" name="message" rows="6" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+
+    </div> <!-- CLOSE .contact-container -->
+  </section>
+
+  <!-- Back to Top Button -->
+  <button id="backToTopBtn" title="Back to Top">↑</button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 National University - BSIT Portfolio. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src= "js/script.js"></script>
+</body>
+</html>
