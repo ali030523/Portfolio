@@ -11,12 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
     currentStep = index;
   };
 
-  // Scroll to form on Book Now click
   document.getElementById("go-to-booking").addEventListener("click", () => {
     document.getElementById("booking-section").scrollIntoView({ behavior: "smooth" });
   });
 
-  // Auto TO value
   document.getElementById("from").addEventListener("change", () => {
     const from = document.getElementById("from").value;
     document.getElementById("to").value =
@@ -24,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
       from === "Batangas" ? "Odiongan" : "";
   });
 
-  // Fare calculator
   const fareMap = {
     "Super Value": 700,
     "Tourist": 900,
@@ -52,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("class").addEventListener("change", updateFare);
   document.getElementById("age").addEventListener("input", updateFare);
 
-  // Navigation
   document.getElementById("next1").onclick = () => {
     if (validateStep1()) showStep(1);
   };
@@ -65,14 +61,12 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   document.getElementById("back2").onclick = () => showStep(1);
 
-  // Cancel booking
   document.getElementById("cancel").onclick = () => {
     if (confirm("Are you sure you want to cancel this booking?")) {
       window.location.reload();
     }
   };
 
-  // Review before confirm
   const showReview = () => {
     const cls = document.getElementById("class").value;
     let seatNum = (cls === "Suite" || cls === "Cabin")
@@ -81,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const summary = `
       <p><strong>Name:</strong> ${document.getElementById("name").value}</p>
+      <p><strong>Email:</strong> ${document.getElementById("email").value}</p>
       <p><strong>Gender:</strong> ${document.getElementById("gender").value}</p>
       <p><strong>Age:</strong> ${document.getElementById("age").value}</p>
       <p><strong>From:</strong> ${document.getElementById("from").value}</p>
@@ -94,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("review-summary").innerHTML = summary;
   };
 
-  // Final Submit
   document.getElementById("booking-form").addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -120,7 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.getElementById("receipt-modal").classList.remove("hidden");
 
-    // After 4 seconds, reset to landing
     setTimeout(() => {
       document.getElementById("receipt-modal").classList.add("hidden");
       document.getElementById("booking-form").reset();
@@ -134,46 +127,104 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("receipt-modal").classList.add("hidden");
   };
 
-  // Step 1 validation
   const validateStep1 = () => {
     const name = document.getElementById("name").value.trim();
     const age = document.getElementById("age").value;
     const gender = document.getElementById("gender").value;
-    if (!name || !age || !gender) {
+    const email = document.getElementById("email").value.trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const nameRegex = /^[a-zA-Z\s.'-]+$/;
+    const blockedDomains = ["tempmail.com", "mailinator.com", "10minutemail.com"];
+    const domain = email.split("@")[1];
+    const ageNum = parseInt(age);
+
+    if (!name || !age || !gender || !email) {
       alert("Please fill out all required passenger fields.");
       return false;
     }
+
+    if (!nameRegex.test(name)) {
+      alert("Name can only contain letters and basic punctuation.");
+      return false;
+    }
+
+    if (isNaN(ageNum) || ageNum <= 0 || ageNum > 120) {
+      alert("Please enter a valid age.");
+      return false;
+    }
+
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return false;
+    }
+
+    if (blockedDomains.includes(domain)) {
+      alert("Please use a valid personal email address.");
+      return false;
+    }
+
     return true;
   };
 
-  // Step 2 validation
   const validateStep2 = () => {
     const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
     const dateInput = document.getElementById("date").value;
-    const time = document.getElementById("time").value;
+    const timeInput = document.getElementById("time").value;
     const cls = document.getElementById("class").value;
+    const fareValue = document.getElementById("fare").dataset.final;
 
-    if (!from || !time || !cls || !dateInput) {
+    if (!from || !to || !dateInput || !timeInput || !cls) {
       alert("Please complete all travel details.");
       return false;
     }
 
-    const selectedDate = new Date(dateInput);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    if (from === to) {
+      alert("Departure and arrival locations cannot be the same.");
+      return false;
+    }
 
-    if (selectedDate <= today || selectedDate.getFullYear() < 2025) {
-      alert("Travel date must be in the future (2025 onwards).");
+    const convertedTime = convertTo24Hour(timeInput);
+    const fullDateTimeString = `${dateInput}T${convertedTime}`;
+    const selectedDateTime = new Date(fullDateTimeString);
+    const now = new Date();
+
+    if (isNaN(selectedDateTime.getTime())) {
+      alert("Invalid date or time format.");
+      return false;
+    }
+
+    if (selectedDateTime <= now || selectedDateTime.getFullYear() < 2025) {
+      alert("Travel date and time must be in the future (2025 onwards).");
+      return false;
+    }
+
+    if (!fareValue || parseFloat(fareValue) <= 0) {
+      alert("Please select a valid class and age to calculate the fare.");
       return false;
     }
 
     return true;
   };
 
-  showStep(0); // start at step 1
+  const convertTo24Hour = (timeStr) => {
+    const [time, modifier] = timeStr.split(" ");
+    let [hours, minutes] = time.split(":").map(Number);
+
+    if (modifier === "PM" && hours !== 12) {
+      hours += 12;
+    }
+    if (modifier === "AM" && hours === 12) {
+      hours = 0;
+    }
+
+    return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
+  };
+
+  showStep(0);
 });
 
-// Scroll progress bar
 window.onscroll = () => {
   const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
