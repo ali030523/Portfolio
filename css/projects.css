@@ -4,7 +4,6 @@
   background: linear-gradient(145deg, #0f172a, #0b0f1a);
   min-height: 100vh;
   color: #ffffff;
-  position: relative;
   overflow-x: hidden;
 }
 
@@ -31,76 +30,68 @@
 /* 🔹 Project Grid Layout */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
 /* 🔹 Project Card */
 .project-card {
   background: rgba(26, 26, 26, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
-  padding: 20px;
-  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
   overflow: hidden;
   position: relative;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .project-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 0 30px rgba(52, 152, 219, 0.4);
-  border-color: rgba(100, 181, 246, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(100, 181, 246, 0.2);
 }
 
+/* 🔹 Card Media */
 .project-card iframe {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 10px;
+  height: 180px;
   border: none;
-  margin-bottom: 12px;
+  border-radius: 10px 10px 0 0;
 }
 
 /* 🔹 Card Content */
-.card-content h3 {
-  font-size: 1.2rem;
-  color: #ffffff;
-  margin-bottom: 8px;
-  transition: all 0.3s ease;
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.card-content h3:hover {
-  text-decoration: underline;
-  text-decoration-color: #64b5f6;
-  text-underline-offset: 4px;
-  cursor: default;
+.card-content h3 {
+  font-size: 1.15rem;
+  color: #ffffff;
+  margin: 0;
 }
 
 .card-content p {
-  font-size: 0.88rem;
-  color: #ddd;
-  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #ccc;
   line-height: 1.5;
 }
 
-/* 🔹 Tags */
+/* 🔹 Project Tags */
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 10px;
+  gap: 8px;
 }
 
 .project-tags span {
   background: rgba(52, 152, 219, 0.2);
   border: 1px solid #3498db;
   color: #fff;
-  font-size: 0.72rem;
-  padding: 3px 9px;
+  font-size: 0.75rem;
+  padding: 4px 10px;
   border-radius: 20px;
-  transition: all 0.3s ease;
 }
 
 .project-tags span:hover {
@@ -109,20 +100,15 @@
   border-color: #64b5f6;
 }
 
-/* 🔹 Pros, Cons, Challenges */
+/* 🔹 Highlights List */
 .project-highlights {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 12px;
-}
-
-.project-highlights li {
-  font-size: 0.85rem;
+  list-style: disc;
+  padding-left: 20px;
   color: #b0bec5;
-  margin-bottom: 4px;
+  font-size: 0.85rem;
 }
 
-/* 🔹 Button */
+/* 🔹 Call-to-Action Button */
 .btn-glow {
   background: linear-gradient(to right, #3498db, #2980b9);
   color: #fff;
@@ -136,36 +122,13 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: fit-content;
   align-self: flex-start;
+  margin-top: auto;
   cursor: pointer;
 }
 
 .btn-glow:hover {
   transform: scale(1.06);
   box-shadow: 0 0 18px rgba(52, 152, 219, 0.7);
-}
-
-/* 🔹 Footer Layout */
-.footer {
-  background: #0b0f1a;
-  padding: 30px 10px;
-  text-align: center;
-  color: #ccc;
-  font-size: 0.85rem;
-}
-
-/* 🔹 Back to Top */
-.footer a.back-to-top {
-  display: inline-block;
-  margin-top: 8px;
-  color: #64b5f6;
-  font-weight: 500;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer a.back-to-top:hover {
-  color: #ffffff;
-  text-decoration: underline;
 }
 
 /* 🔹 Animations */
@@ -193,38 +156,23 @@
   }
 }
 
-/* 🔹 Responsive */
+/* 🔹 Responsive Fixes */
 @media (max-width: 768px) {
   .projects-section {
     padding: 40px 4%;
   }
 
-  .card-content h3 {
-    font-size: 1.1rem;
-  }
-
-  .card-content p,
-  .project-highlights li {
-    font-size: 0.85rem;
-  }
-
   .btn-glow {
     font-size: 0.85rem;
     padding: 7px 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-title {
-    font-size: 1.5rem;
-  }
-
-  .project-card {
-    padding: 14px;
-  }
-
-  .btn-glow {
     width: 100%;
-    display: block;
+  }
+
+  .card-content h3 {
+    font-size: 1.05rem;
+  }
+
+  .project-highlights {
+    font-size: 0.82rem;
   }
 }
