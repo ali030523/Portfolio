@@ -21,6 +21,8 @@
   font-size: clamp(2.5rem, 5vw, 3.8rem);
   font-weight: 800;
   line-height: 1.2;
+  height: 4.2rem; /* ✅ Fixed height to prevent layout shift */
+  overflow: hidden;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -46,6 +48,7 @@
   line-height: 1.6;
   margin-bottom: 35px;
   animation: fadeIn 1.2s ease-in-out 0.6s both;
+  text-align: justify; /* ✅ Justified text restored */
 }
 
 /* BUTTON ANIMATED */

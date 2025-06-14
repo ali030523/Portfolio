@@ -7,8 +7,30 @@
   <title>Creative Portfolio</title>
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/index.css" />
+
+  <style>
+    /* Typing Animation */
+    .typed-text {
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    .cursor {
+      display: inline-block;
+      color: #1e90ff;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
+  <!-- NAVIGATION -->
   <header class="navbar">
     <div class="logo">
       <img src="photos/nu_logo.png" alt="National University Logo" />
@@ -25,11 +47,14 @@
     </nav>
   </header>
 
+  <!-- HERO SECTION -->
   <section class="hero">
     <div class="hero-text">
-      <h1><span class="dot">•</span> Hello, I'm Leah</h1>
-      <h3>BSIT-MWA STUDENT | WEB DEVELOPER</h3>
-      <p>I am a passionate web developer specializing in creating interactive and responsive websites. Welcome to my digital space where design meets functionality.</p>
+      <h1><span class="dot">•</span> <span class="typed-text"></span><span class="cursor">|</span></h1>
+      <h3>BSIT-MWA Student | Aspiring Web Developer</h3>
+      <p>
+        I’m a 2nd Year BSIT student majoring in Mobile and Web Applications. I’m passionate about web development and currently honing my skills in building interactive, responsive, and user-centered websites. This portfolio showcases my learning journey, projects, and growing interest in the world of technology.
+      </p>
       <a href="about.html" class="animated-btn">Additional Information About Me</a>
     </div>
     <div class="avatar">
@@ -37,18 +62,54 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <p>&copy; 2025 National University - BSIT Portfolio. All rights reserved.</p>
   </footer>
 
+  <!-- SCRIPT -->
   <script>
+    // Mobile nav toggle
     document.addEventListener("DOMContentLoaded", () => {
       const toggle = document.getElementById('menu-toggle');
       const navLinks = document.getElementById('nav-links');
-
       toggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
       });
+    });
+
+    // Typing animation loop
+    const words = ["Hello, I'm Leah","Work in progress", "Wired for success"];
+    const typedText = document.querySelector(".typed-text");
+    const cursor = document.querySelector(".cursor");
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingDelay = 100;
+    let erasingDelay = 60;
+    let newWordDelay = 1500;
+
+    function typeLoop() {
+      const currentWord = words[wordIndex];
+
+      if (!isDeleting && charIndex <= currentWord.length) {
+        typedText.textContent = currentWord.substring(0, charIndex++);
+        setTimeout(typeLoop, typingDelay);
+      } else if (isDeleting && charIndex >= 0) {
+        typedText.textContent = currentWord.substring(0, charIndex--);
+        setTimeout(typeLoop, erasingDelay);
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) {
+          wordIndex = (wordIndex + 1) % words.length;
+        }
+        setTimeout(typeLoop, newWordDelay);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(typeLoop, 500);
     });
   </script>
 </body>
