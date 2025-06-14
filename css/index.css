@@ -18,37 +18,37 @@
 }
 
 .hero-text h1 {
-  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-size: clamp(1.6rem, 3.8vw, 2.4rem); /* Final mobile-safe size */
   font-weight: 800;
   line-height: 1.2;
-  height: 4.2rem; /* ✅ Fixed height to prevent layout shift */
-  overflow: hidden;
+  height: auto;
   display: flex;
+  flex-wrap: nowrap;  /* ✅ Keeps dot and animated text on one line */
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 .dot {
   color: #1e90ff;
-  font-size: 3rem;
+  font-size: 2.6rem;
   text-shadow: 0 0 12px #1e90ff, 0 0 6px #1e90ff;
 }
 
 .hero-text h3 {
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
   color: #1e90ff;
   margin-bottom: 20px;
   text-shadow: 0 0 8px rgba(30, 144, 255, 0.3);
 }
 
 .hero-text p {
-  font-size: clamp(1rem, 2.2vw, 1.05rem);
+  font-size: clamp(0.9rem, 1.8vw, 0.98rem);
   color: #d3d3d3;
   line-height: 1.6;
   margin-bottom: 35px;
   animation: fadeIn 1.2s ease-in-out 0.6s both;
-  text-align: justify; /* ✅ Justified text restored */
+  text-align: justify;
 }
 
 /* BUTTON ANIMATED */
@@ -153,28 +153,40 @@
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .hero {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    padding: 60px 8% 40px;
+    gap: 40px;
   }
 
   .hero-text {
-    padding: 0 20px;
+    padding: 0;
+    max-width: 100%;
   }
 
   .hero-text h1 {
+    font-size: 2rem;
     justify-content: center;
+    height: auto;
+  }
+
+  .hero-text h3 {
+    font-size: 0.95rem;
   }
 
   .avatar {
-    margin-top: 30px;
+    margin-top: 10px;
   }
 
   .avatar img {
     width: 75%;
+    max-width: 250px;
   }
 
   .avatar::before {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
   }
 }
