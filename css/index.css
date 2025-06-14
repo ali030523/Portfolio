@@ -126,7 +126,7 @@
 
 .avatar img:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 40px rgba(0, 1, 1, 0.5);
+  box-shadow: 0 10px 40px rgba(53, 90, 209, 0.5);
 }
 
 /* ANIMATIONS */
